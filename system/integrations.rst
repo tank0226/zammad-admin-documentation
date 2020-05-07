@@ -33,10 +33,15 @@ Integrations for Monitoring Systems
 
 .. note:: This section currently misses the following integrations:
 
-   * Check_MK
    * Icinga
    * Monit
    * Nagios
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   integrations/check_mk
 
 Other Integrations
 ^^^^^^^^^^^^^^^^^^
