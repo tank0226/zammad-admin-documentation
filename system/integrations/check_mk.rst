@@ -5,20 +5,47 @@ Check_MK is a powerful monitoring solution that can either send emails or http r
 This integration allows you to recognize check_mk tickets and thus automatically close tickets 
 if a system self-heals or gets fixed automatically.
 
+.. warning:: Bugs ahead
+  Please note that receiving mail currently is buggy and does not work as expected. 
+  You can find more information on this topic on Github: Issue2377_ and Issue2180_.
+
+.. _Issue2377: https://github.com/zammad/zammad/issues/2377
+.. _Issue2180: https://github.com/zammad/zammad/issues/2180
+
 Settings
 --------
 
-Zammad allows you to define in which group Check_MK issues should be created. 
+Let's talk about the settings very quick.
 
-.. note:: This option only affects created monitoring tickets via http call.
+Group
+  Define a group in which check_mk tickets should be created.
 
-The option auto close decides if a possible self heal of an monitoring alert is supposed 
-to automatically be closed. This can be handy if you don't want to have a look on self heals 
-or expect those tickets to be obsolete if the alert is solved.
+  .. hint:: This option only affects created monitoring tickets via http calls.
 
-The Check_MK integration also allows you to decide which state automatically closed alerts 
-shall be closed to. This allows you to define a specific state (e.g. `self-healed`) which will 
-allow you to filter for those tickets if needed.
+Auto close: default: `yes`
+  Usually you won't have to take an extra look on self-heals. However, if it's mandatory 
+  for you to have a look before you close a ticket, you can set this option to `no`. 
+
+  .. note:: Even with auto close being set to yes, Zammad will still notify your agents 
+    based on their permissions.
+
+Auto close state: default: `closed`
+  Especially if you want to use reporting on tickets, you may require a different state for 
+  monitoring tickets than "closed". In this case you can choose a different state here. 
+  For adding further states, please see: 
+  `Zammad console documentation <https://docs.zammad.org/en/latest/admin/console.html>`_
 
 .. figure:: /images/system/check_mk-settings.png
    :alt: Screenshot of Check_MK settings within the integrations page
+
+Monitoring emails
+------------------
+
+This section will be updated as soon as the email functionality is completely working.
+
+At this moment, ticket follow ups are not correctly recognized, which is why you may want 
+to stick to the http call method below.
+
+Pushing monitoring notifications via http call
+----------------------------------------------
+
